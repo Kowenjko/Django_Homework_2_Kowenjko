@@ -1,0 +1,33 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+
+<div class="post container">
+    <div class="border border-primary border-2 m-3">
+        <h2 class="text-center mt-3 fs-3 fw-bold">New Post</h2>
+        <form class=" d-flex flex-column justify-content-center align-items-center" method="POST">
+            {% csrf_token %}
+            <!-- {{form.as_p}} -->
+
+            {% for field in form %}
+            <div class="w-50">
+
+                <div class="fw-bold fs-5 ms-3 mb-2">{{field.label_tag}}</div>
+                <div class=" form-control form-control-lg  w-75 mb-3 ms-3 col-3">
+                    {{field}}
+                </div>
+
+            </div>
+            {% endfor %}
+            <div class="w-50 ms-5">
+                <a class=" btn btn-primary w-25  mb-3" href="{% url 'post_list' %}">Cancel</a>
+                <button class="btn btn-primary w-25 mb-3" type='submit'>Save</buttom>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+
+
+{% endblock %}
